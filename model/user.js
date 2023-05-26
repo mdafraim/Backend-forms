@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
     },
     contact: {
         type: String,
@@ -23,7 +23,7 @@ const User = mongoose.model('User', userSchema);
 function valdationUser(user) {
     const schema = {
         fullname: Joi.string().min(5).required(),
-        email: Joi.string().min(5).email().required(),
+        email: Joi.string().min(5).required().email(),
         contact: Joi.string().min(5).required()
     };
     return Joi.validate(user, schema)
